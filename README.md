@@ -17,6 +17,9 @@
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_entra_extension_linux"></a> [entra\_extension\_linux](#module\_entra\_extension\_linux) | ./sub-modules/aztf_extension_entra_id | n/a |
+| <a name="module_entra_extension_windows"></a> [entra\_extension\_windows](#module\_entra\_extension\_windows) | ./sub-modules/aztf_extension_entra_id | n/a |
+| <a name="module_entra_extension_windows_intune"></a> [entra\_extension\_windows\_intune](#module\_entra\_extension\_windows\_intune) | ./sub-modules/aztf_extension_entra_id_with_intune | n/a |
 | <a name="module_vm_ansible_inventory"></a> [vm\_ansible\_inventory](#module\_vm\_ansible\_inventory) | ./sub-modules/aztf_ansible_host_inventory | n/a |
 | <a name="module_vm_configure_devops"></a> [vm\_configure\_devops](#module\_vm\_configure\_devops) | ./sub-modules/aztf_extension_devops_access | n/a |
 | <a name="module_vm_mssql_windows_extension"></a> [vm\_mssql\_windows\_extension](#module\_vm\_mssql\_windows\_extension) | ./sub-modules/aztf_extension_sql_server | n/a |
@@ -65,6 +68,8 @@
 | <a name="input_vm_imageSku"></a> [vm\_imageSku](#input\_vm\_imageSku) | The SKU of the image to use for the virtual machine. | `string` | `null` | no |
 | <a name="input_vm_imageVersion"></a> [vm\_imageVersion](#input\_vm\_imageVersion) | The version of the image to use for the virtual machine. | `string` | `null` | no |
 | <a name="input_vm_internalDnsNameLabel"></a> [vm\_internalDnsNameLabel](#input\_vm\_internalDnsNameLabel) | The internal DNS name label for the virtual machine. | `string` | `null` | no |
+| <a name="input_vm_isEntraJoined"></a> [vm\_isEntraJoined](#input\_vm\_isEntraJoined) | Is the virtual machine is Entra ID joined to domain | `bool` | `false` | no |
+| <a name="input_vm_isIntuneEnrolled"></a> [vm\_isIntuneEnrolled](#input\_vm\_isIntuneEnrolled) | Is the virtual machine is Intune enrolled | `bool` | `false` | no |
 | <a name="input_vm_isWindows"></a> [vm\_isWindows](#input\_vm\_isWindows) | Is the virtual machine a windows machine | `bool` | n/a | yes |
 | <a name="input_vm_osDisk_sizeGiB"></a> [vm\_osDisk\_sizeGiB](#input\_vm\_osDisk\_sizeGiB) | The size of the OS disk in GiB. | `number` | `128` | no |
 | <a name="input_vm_osDisk_storageAccountType"></a> [vm\_osDisk\_storageAccountType](#input\_vm\_osDisk\_storageAccountType) | The storage account type for the OS disk. | `string` | `"Standard_LRS"` | no |
