@@ -1,0 +1,32 @@
+name: Terraform Pull Closed CI
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+      - master
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: write  # This is required for actions/checkout
+
+jobs:
+    Validate: 
+        name: Terraform Version Tag
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+              with:
+                ref: ${{ github.event.pull_request.head.ref }}
+
+            - run: git config --global user.name 'github-actions'
+            - run: git config --global user.email 'github-actions@github.com'
+
+            - name: Taggin
+              run: |
+                    config_version=$(yq .version .config/config.yaml)
+                    echo "Tagging version v${config_version}"
+                    git tag -a ${config_version} -m "Tagging version v${config_version}"
+                    git push origin ${{ github.event.pull_request.head.ref }} --tags
