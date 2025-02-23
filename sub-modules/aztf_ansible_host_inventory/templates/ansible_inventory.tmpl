@@ -1,0 +1,7 @@
+all:
+    hosts:
+%{ for idx, vm_pip_node in vm_pips_nodes ~}
+        ${ vm_nodes[idx] }:
+            ansible_user:   ${ username }
+            ansible_host:   ${ vm_pip_node }
+%{ endfor ~}

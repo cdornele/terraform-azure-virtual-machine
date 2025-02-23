@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Setup some useful shell options
+#
+
+# Print expanded commands as they are about to be executed
+set -o xtrace
+
+# Print shell input lines as they are read in
+set -o verbose
+
+# Fail if any command exits with a non-zero exit status
+set -o errexit
+
+# Ensure that the exit status of a pipeline command is non-zero if any
+# stage of the pipefile has a non-zero exit status.
+set -o pipefail
+
+# Fail if attempting to access and unset variable or parameter
+set -o nounset
+
+#
+# SSH Key
+#
+
+ssh_key="${key}"
+local_user="${local_user}"
+
+echo $ssh_key > /home/$local_user/.ssh/authorized_keys
+
+

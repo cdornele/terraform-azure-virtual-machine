@@ -1,0 +1,17 @@
+<#
+.SYNOPSIS
+    Disclaimer for PowerShell Scripts
+
+.DESCRIPTION
+
+
+.NOTICE
+
+
+#>
+
+%{ for idx, lun in luns ~}
+
+Get-Disk | Where LOCATION -match 'LUN ${lun}' | Initialize-Disk -PartitionStyle MBR -PassThru
+
+%{ endfor ~}
