@@ -16,5 +16,7 @@
 - Added support for zones.
 - Fixed issue #2 - Error with the variable "var.windows_vm_tags"
 
+# Version 1.0.2
 
+- Fixed outputs.
 
