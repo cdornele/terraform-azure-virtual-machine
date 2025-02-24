@@ -1,6 +1,6 @@
 # Example - Single Azure Linux Virtual Machine
 
-````
+```
 resource "azurerm_resource_group" "example" {
   name     = "example-rg-${random_id.id.hex}"
   location = "eastus"
