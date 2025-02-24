@@ -42,8 +42,6 @@
 |------|-------------|------|---------|:--------:|
 | <a name="input_ansible_host_file_enabled"></a> [ansible\_host\_file\_enabled](#input\_ansible\_host\_file\_enabled) | Enable ansible host file | `bool` | `false` | no |
 | <a name="input_ansible_host_file_private_enabled"></a> [ansible\_host\_file\_private\_enabled](#input\_ansible\_host\_file\_private\_enabled) | Enable private ansible host file | `bool` | `true` | no |
-| <a name="input_availability_zones_enabled"></a> [availability\_zones\_enabled](#input\_availability\_zones\_enabled) | Enable availability zones for the virtual machine. | `bool` | `false` | no |
-| <a name="input_availability_zones_number"></a> [availability\_zones\_number](#input\_availability\_zones\_number) | The number of availability zones for the virtual machine. | `number` | `0` | no |
 | <a name="input_configure_devops_enabled"></a> [configure\_devops\_enabled](#input\_configure\_devops\_enabled) | Enable devops configuration | `bool` | `false` | no |
 | <a name="input_location"></a> [location](#input\_location) | The location of the resources. | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | The name of the resource group. | `string` | n/a | yes |
@@ -52,6 +50,8 @@
 | <a name="input_vm_authentication_SshPublicKey"></a> [vm\_authentication\_SshPublicKey](#input\_vm\_authentication\_SshPublicKey) | The ssh public key for the virtual machine | `string` | `null` | no |
 | <a name="input_vm_authentication_adminPassword"></a> [vm\_authentication\_adminPassword](#input\_vm\_authentication\_adminPassword) | The admin password for the virtual machine | `string` | `null` | no |
 | <a name="input_vm_authentication_adminUsername"></a> [vm\_authentication\_adminUsername](#input\_vm\_authentication\_adminUsername) | The admin username for the virtual machine | `string` | n/a | yes |
+| <a name="input_vm_availability_zones_enabled"></a> [vm\_availability\_zones\_enabled](#input\_vm\_availability\_zones\_enabled) | Enable availability zones for the virtual machine. | `bool` | `false` | no |
+| <a name="input_vm_availability_zones_number"></a> [vm\_availability\_zones\_number](#input\_vm\_availability\_zones\_number) | The number of availability zones for the virtual machine. | `number` | `0` | no |
 | <a name="input_vm_bootDiagnosticsUri"></a> [vm\_bootDiagnosticsUri](#input\_vm\_bootDiagnosticsUri) | The URI of the storage account for boot diagnostics | `string` | n/a | yes |
 | <a name="input_vm_count"></a> [vm\_count](#input\_vm\_count) | The number of virtual machines to create. | `number` | `1` | no |
 | <a name="input_vm_custom_imageId"></a> [vm\_custom\_imageId](#input\_vm\_custom\_imageId) | The ID of the custom image to use for the virtual machine. | `string` | `null` | no |
