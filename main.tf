@@ -53,7 +53,7 @@ resource "azurerm_windows_virtual_machine" "windows-vm" {
   resource_group_name = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.this[count.index].id]
   size                  = var.vm_size
-  zone                  = var.availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.availability_zones_number) + 1 : null
+  zone                  = var.vm_availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.vm_availability_zones_number) + 1 : null
 
   # Custom Image
   source_image_id       = var.vm_custom_imageId != null ? var.vm_custom_imageId : null
@@ -118,7 +118,7 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
   resource_group_name = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.this[count.index].id]
   size                  = var.vm_size
-  zone                  = var.availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.availability_zones_number) + 1 : null
+  zone                  = var.vm_availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.vm_availability_zones_number) + 1 : null
 
   # Custom Image
   source_image_id       = var.vm_custom_imageId != null ? var.vm_custom_imageId : null
@@ -189,7 +189,7 @@ resource "azurerm_managed_disk" "this" {
   storage_account_type = local.dataDisks[count.index].dataDiskStgType
   create_option        = "Empty"
   disk_size_gb         = local.dataDisks[count.index].dataDiskSizeGiB
-  zone                 = var.availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.availability_zones_number) + 1 : null
+  zone                 = var.vm_availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.vm_availability_zones_number) + 1 : null
   tags                 = var.vm_tags
 
   lifecycle {
@@ -262,6 +262,7 @@ module "entra_extension_windows" {
   count                     = var.vm_isWindows && var.vm_isEntraJoined && !var.vm_isIntuneEnrolled ? var.vm_count : 0
   vm_name                   = azurerm_windows_virtual_machine.windows-vm[count.index].name
   vm_id                     = azurerm_windows_virtual_machine.windows-vm[count.index].id
+  vm_tags                   = var.vm_tags 
 }
 
 module "entra_extension_linux" {
@@ -269,6 +270,7 @@ module "entra_extension_linux" {
   count                     = !var.vm_isWindows && var.vm_isEntraJoined ? var.vm_count : 0
   vm_name                   = azurerm_linux_virtual_machine.vm-linux[count.index].name
   vm_id                     = azurerm_linux_virtual_machine.vm-linux[count.index].id
+  vm_tags                   = var.vm_tags 
 }
 
 module "entra_extension_windows_intune" {
@@ -276,4 +278,5 @@ module "entra_extension_windows_intune" {
   count                     = var.vm_isWindows && var.vm_isIntuneEnrolled && !var.vm_isEntraJoined ? var.vm_count : 0
   vm_name                   = azurerm_windows_virtual_machine.windows-vm[count.index].name
   vm_id                     = azurerm_windows_virtual_machine.windows-vm[count.index].id
+  vm_tags                   = var.vm_tags 
 }

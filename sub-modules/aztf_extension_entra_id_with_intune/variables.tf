@@ -15,6 +15,7 @@ variable "vm_id" {
 variable "vm_tags" {
   description = "A mapping of tags to assign to the resource."
   type        = map(string)
+  default     = {}
 }
 
 # end
