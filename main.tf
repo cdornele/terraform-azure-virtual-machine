@@ -53,6 +53,7 @@ resource "azurerm_windows_virtual_machine" "windows-vm" {
   resource_group_name = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.this[count.index].id]
   size                  = var.vm_size
+  zone                  = var.availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.availability_zones_number) + 1 : null
 
   # Custom Image
   source_image_id       = var.vm_custom_imageId != null ? var.vm_custom_imageId : null
@@ -93,6 +94,9 @@ resource "azurerm_windows_virtual_machine" "windows-vm" {
   boot_diagnostics {
     storage_account_uri = var.vm_bootDiagnosticsUri
   }
+
+  
+
   tags = var.vm_tags
   depends_on = [azurerm_marketplace_agreement.this,
     azurerm_network_interface.this]
@@ -114,6 +118,7 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
   resource_group_name = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.this[count.index].id]
   size                  = var.vm_size
+  zone                  = var.availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.availability_zones_number) + 1 : null
 
   # Custom Image
   source_image_id       = var.vm_custom_imageId != null ? var.vm_custom_imageId : null
@@ -184,6 +189,7 @@ resource "azurerm_managed_disk" "this" {
   storage_account_type = local.dataDisks[count.index].dataDiskStgType
   create_option        = "Empty"
   disk_size_gb         = local.dataDisks[count.index].dataDiskSizeGiB
+  zone                 = var.availability_zones_enabled ? ((floor(count.index / length(var.vm_dataDisks))) % var.availability_zones_number) + 1 : null
   tags                 = var.vm_tags
 
   lifecycle {

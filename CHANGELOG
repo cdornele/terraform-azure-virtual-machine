@@ -13,5 +13,8 @@
 - Enhancement the SQL documentation.
 - Enhancement the outputs.
 - Added new SQL example.
+- Added support for zones.
+- Fixed issue #2 - Error with the variable "var.windows_vm_tags"
+
 
 
