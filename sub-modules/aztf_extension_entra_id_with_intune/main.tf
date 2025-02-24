@@ -14,7 +14,7 @@ resource "azurerm_virtual_machine_extension" "aad_extension_with_intune" {
       "mdmId": "0000000a-0000-0000-c000-000000000000"
     }
   SETTINGS
-  tags                 = var.windows_vm_tags
+  tags                 = var.vm_tags
 }
 
 # end

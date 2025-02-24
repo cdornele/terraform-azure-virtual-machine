@@ -12,6 +12,11 @@ variable "vm_id" {
   description = "The ID of the Windows Virtual Machine"
 }
 
+variable "vm_tags" {
+  description = "A mapping of tags to assign to the resource."
+  type        = map(string)
+}
+
 # end
 #--------------------------------------------*--------------------------------------------
 

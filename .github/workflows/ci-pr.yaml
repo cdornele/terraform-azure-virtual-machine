@@ -26,6 +26,8 @@ jobs:
 
             - name: tfsec
               uses: aquasecurity/tfsec-action@v1.0.0
+            
+            - run: rm -rf tfsec
 
             - name: Render terraform docs and push changes back to PR
               uses: terraform-docs/gh-actions@main

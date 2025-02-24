@@ -53,6 +53,20 @@ variable "vm_enableAcceleratedNetworking" {
   default     = false
 }
 
+variable "availability_zones_enabled" {
+  description = "Enable availability zones for the virtual machine."
+  type        = bool
+  default     = false
+  
+}
+
+variable "availability_zones_number" {
+  description = "The number of availability zones for the virtual machine."
+  type        = number
+  default     = 0
+  
+}
+
 
 variable "vm_enableIpForwarding" {
   description = "Enable IP Forwarding on the virtual machine."
