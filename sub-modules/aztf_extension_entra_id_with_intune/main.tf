@@ -7,7 +7,7 @@ resource "azurerm_virtual_machine_extension" "aad_extension_with_intune" {
   virtual_machine_id   = var.vm_id
   publisher            = "Microsoft.Azure.ActiveDirectory"
   type                 = "AADLoginForWindows"
-  type_handler_version = "1.0"
+  type_handler_version = "2.0"
   auto_upgrade_minor_version = true
   settings = <<-SETTINGS
     {

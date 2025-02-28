@@ -20,3 +20,8 @@
 
 - Fixed outputs.
 
+# Version 1.0.3
+
+- Enhancement identity block.
+- Update AAD extension version.
+- Fixed tags. 
