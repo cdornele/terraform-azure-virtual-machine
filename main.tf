@@ -95,6 +95,9 @@ resource "azurerm_windows_virtual_machine" "windows-vm" {
     storage_account_uri = var.vm_bootDiagnosticsUri
   }
 
+  identity {
+    type = "SystemAssigned"
+  }
   
 
   tags = var.vm_tags
@@ -167,6 +170,11 @@ resource "azurerm_linux_virtual_machine" "vm-linux" {
   boot_diagnostics {
     storage_account_uri = var.vm_bootDiagnosticsUri
   }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
   tags = var.vm_tags
   depends_on = [azurerm_marketplace_agreement.this,
                 azurerm_network_interface.this]
