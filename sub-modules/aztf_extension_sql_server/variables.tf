@@ -8,7 +8,7 @@ variable "vm_id" {
 
 variable "vm_luns" {
   description = "LUNs to use for the data disks"
-  default = []
+  default     = []
 }
 
 variable "sql_settings" {
@@ -17,7 +17,7 @@ variable "sql_settings" {
 
 variable "sql_connectivity_update_password" {
   description = "Update the SQL Server password"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "sql_connectivity_update_username" {

@@ -1,5 +1,5 @@
 #--------------------------------------------*--------------------------------------------
-# Example: Single Azure Windows VM
+# Example: Azure Virtual Machine
 #--------------------------------------------*--------------------------------------------
 
 resource "random_id" "id" {
@@ -42,27 +42,26 @@ resource "azurerm_storage_account" "example" {
   }
 }
 
-module "windows_vm" {
+module "linux_vm" {
   source                             = "../.."
   vm_count                           = 1
   vm_size                            = "Standard_B1s"
-  vm_imagePublisher                  = "MicrosoftWindowsServer"
-  vm_imageOffer                      = "WindowsServer"
-  vm_imageSku                        = "2022-datacenter-azure-edition"
-  vm_imageVersion                    = "latest"
-  vm_isWindows                       = true
+  vm_imagePublisher                  = "Canonical"
+  vm_imageOffer                      = "ubuntu-24_04-lts"
+  vm_imageSku                        = "server-gen1"
+  vm_isWindows                       = false
   vm_public_ip_enabled               = false
   vm_disable_password_authentication = false
+  vm_imageVersion                    = "latest"
   vm_imagePlanExist                  = "no"
   vm_authentication_adminUsername    = "adminuser"
   vm_authentication_adminPassword    = "Password1234!"
-  vm_prefix                          = "vmtest${random_id.id.hex}"
+  vm_prefix                          = "vmlnxtst${random_id.id.hex}"
   location                           = azurerm_resource_group.example.location
   resource_group_name                = azurerm_resource_group.example.name
   vm_enableAcceleratedNetworking     = false
   vm_subnet_id                       = azurerm_subnet.example.id
-  vm_private_ip_address_allocation   = "Static"
-  vm_private_ip_address              = ["10.0.1.11"]
+  vm_private_ip_address_allocation   = "Dynamic"
   vm_bootDiagnosticsUri              = azurerm_storage_account.example.primary_blob_endpoint
   vm_dataDisks = [
     {
@@ -71,11 +70,19 @@ module "windows_vm" {
       dataDiskSizeGiB = 256
       dataDiskLun     = 10
       dataDiskId      = "data"
-    }
+    },
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 128
+      dataDiskLun     = 11
+      dataDiskId      = "log"
+    },
   ]
   vm_tags = {
-    environment = "test"
+    environment = "dev"
   }
 }
+
 # end
 #--------------------------------------------*--------------------------------------------

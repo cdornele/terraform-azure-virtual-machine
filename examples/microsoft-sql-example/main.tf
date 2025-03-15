@@ -28,7 +28,7 @@ resource "azurerm_virtual_network" "example" {
 
 resource "azurerm_public_ip" "pip" {
   count               = 1
-  name                = format("%s-%s","example-pip",random_id.id.hex)
+  name                = format("%s-%s", "example-pip", random_id.id.hex)
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   allocation_method   = "Static"
@@ -104,65 +104,65 @@ module "windows_vm" {
   vm_private_ip_address_allocation   = "Static"
   vm_private_ip_address              = ["10.0.1.11"]
   vm_bootDiagnosticsUri              = azurerm_storage_account.example.primary_blob_endpoint
-  vm_dataDisks                       = [
-                                        {
-                                          dataDiskStgType = "Standard_LRS"
-                                          dataDiskCache = "None"
-                                          dataDiskSizeGiB = 256
-                                          dataDiskLun = 10
-                                          dataDiskId = "data"
-                                        },
-                                      {
-                                        dataDiskStgType = "Standard_LRS"
-                                        dataDiskCache = "None"
-                                        dataDiskSizeGiB = 256
-                                        dataDiskLun = 11
-                                        dataDiskId = "data"
-                                      },
-                                      {
-                                        dataDiskStgType = "Standard_LRS"
-                                        dataDiskCache = "None"
-                                        dataDiskSizeGiB = 128
-                                        dataDiskLun = 12
-                                        dataDiskId = "log"
-                                      },
-                                      {
-                                        dataDiskStgType = "Standard_LRS"
-                                        dataDiskCache = "None"
-                                        dataDiskSizeGiB = 128
-                                        dataDiskLun = 13
-                                        dataDiskId = "log"
-                                      }
-                                       ]
-  vm_sql_enabled                      = true
-  sql_connectivity_update_password    = "Password1234!"
-  sql_connectivity_update_username    = "sqladmin"
-  vm_sql_settings                     = {
-                                          sql_vm_luns = [10,11,12,13]
-                                          sql_license_type = "PAYG"
-                                          sql_connectivity_type = "PRIVATE"
-                                          sql_auto_patching = false
-                                          storage_configuration_enabled = true
-                                          sql_storage_replication_disk_type = "NEW"
-                                          sql_storage_workload_type = "OLTP"
-                                          sql_system_db_on_data_disk_enabled = true
-                                          storage_configuration = {
-                                            data_settings_enabled = true
-                                            log_settings_enabled = true
-                                            tmp_settings_enabled = false
-                                            data_settings = {
-                                              default_file_path = "F:Data"
-                                              default_file_path_lun = [10,11]
-                                            }
-                                            log_settings = {
-                                              default_log_path = "L:Logs"
-                                              default_log_lun = [12,13]
-                                            }
-                                          }
-                                        }
-  vm_tags                             = {
-                                          environment = "test"
-                                        }
+  vm_dataDisks = [
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 256
+      dataDiskLun     = 10
+      dataDiskId      = "data"
+    },
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 256
+      dataDiskLun     = 11
+      dataDiskId      = "data"
+    },
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 128
+      dataDiskLun     = 12
+      dataDiskId      = "log"
+    },
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 128
+      dataDiskLun     = 13
+      dataDiskId      = "log"
+    }
+  ]
+  vm_sql_enabled                   = true
+  sql_connectivity_update_password = "Password1234!"
+  sql_connectivity_update_username = "sqladmin"
+  vm_sql_settings = {
+    sql_vm_luns                        = [10, 11, 12, 13]
+    sql_license_type                   = "PAYG"
+    sql_connectivity_type              = "PRIVATE"
+    sql_auto_patching                  = false
+    storage_configuration_enabled      = true
+    sql_storage_replication_disk_type  = "NEW"
+    sql_storage_workload_type          = "OLTP"
+    sql_system_db_on_data_disk_enabled = true
+    storage_configuration = {
+      data_settings_enabled = true
+      log_settings_enabled  = true
+      tmp_settings_enabled  = false
+      data_settings = {
+        default_file_path     = "F:Data"
+        default_file_path_lun = [10, 11]
+      }
+      log_settings = {
+        default_log_path = "L:Logs"
+        default_log_lun  = [12, 13]
+      }
+    }
+  }
+  vm_tags = {
+    environment = "test"
+  }
 }
 # end
 #--------------------------------------------*--------------------------------------------

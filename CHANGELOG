@@ -25,3 +25,8 @@
 - Enhancement identity block.
 - Update AAD extension version.
 - Fixed tags. 
+
+# Version 1.0.4
+
+- Fixed variable for image plan publisher id.
+- Added support for secure boot and vtmp.

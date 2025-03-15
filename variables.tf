@@ -12,6 +12,8 @@ variable "resource_group_name" {
   type        = string
 }
 
+# ansible inventory
+
 variable "ansible_host_file_private_enabled" {
   description = "Enable private ansible host file"
   type        = bool
@@ -24,6 +26,7 @@ variable "ansible_host_file_enabled" {
   default     = false
 }
 
+# devops config
 variable "configure_devops_enabled" {
   description = "Enable devops configuration"
   type        = bool
@@ -32,9 +35,11 @@ variable "configure_devops_enabled" {
 
 variable "vm_devops_ssh_key" {
   description = "SSH key for DevOps access"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
+
+# vm
 
 variable "vm_size" {
   description = "The size of the virtual machine."
@@ -57,14 +62,26 @@ variable "vm_availability_zones_enabled" {
   description = "Enable availability zones for the virtual machine."
   type        = bool
   default     = false
-  
+
+}
+
+variable "vm_secure_boot_enabled" {
+  description = "Enable secure boot on the virtual machine."
+  type        = bool
+  default     = false
+}
+
+variable "vm_vtpm_enabled" {
+  description = "Enable vTPM on the virtual machine."
+  type        = bool
+  default     = false
 }
 
 variable "vm_availability_zones_number" {
   description = "The number of availability zones for the virtual machine."
   type        = number
   default     = 0
-  
+
 }
 
 
@@ -185,7 +202,7 @@ variable "vm_imagePlanProductId" {
   default     = null
 }
 
-variable "vm_imagePlanPublisher" {
+variable "vm_imagePlanPublisherId" {
   description = "The publisher of the image plan"
   type        = string
   default     = null
@@ -250,13 +267,13 @@ variable "sql_connectivity_update_password" {
 
 variable "vm_sql_settings" {
   description = "Settings for the SQL Server"
-  default = {}
+  default     = {}
 }
 
 variable "vm_sql_enabled" {
   description = "Enable SQL Server"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "vm_tags" {
