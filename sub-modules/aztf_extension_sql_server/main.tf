@@ -4,7 +4,7 @@
 resource "local_file" "this" {
   content = templatefile(format("%s/templates/initialiaze-disk.ps1.tmpl", path.module),
     {
-      luns       = var.vm_luns
+      luns = var.vm_luns
     }
   )
   filename = format("%s/mssql_extension_bootstrap.ps1", path.module)
@@ -57,9 +57,9 @@ resource "azurerm_mssql_virtual_machine" "this" {
   dynamic "storage_configuration" {
     for_each = lookup(var.sql_settings, "storage_configuration_enabled", false) == true ? [1] : []
     content {
-      disk_type             = lookup(var.sql_settings, "sql_storage_replication_disk_type", "NEW")
-      storage_workload_type = lookup(var.sql_settings, "sql_storage_workload_type", "OLTP")
-      system_db_on_data_disk_enabled = lookup(var.sql_settings, "sql_system_db_on_data_disk_enabled", false )
+      disk_type                      = lookup(var.sql_settings, "sql_storage_replication_disk_type", "NEW")
+      storage_workload_type          = lookup(var.sql_settings, "sql_storage_workload_type", "OLTP")
+      system_db_on_data_disk_enabled = lookup(var.sql_settings, "sql_system_db_on_data_disk_enabled", false)
       # The storage_settings block supports the following:
       dynamic "data_settings" {
         for_each = lookup(var.sql_settings.storage_configuration, "data_settings_enabled", false) == true ? [1] : []
@@ -80,10 +80,10 @@ resource "azurerm_mssql_virtual_machine" "this" {
       dynamic "temp_db_settings" {
         for_each = lookup(var.sql_settings.storage_configuration, "tmp_settings_enabled", false) == true ? [1] : []
         content {
-          default_file_path = var.sql_settings.storage_configuration.tmp_settings.default_tmp_path
-          luns              = var.sql_settings.storage_configuration.tmp_settings.default_tmp_lun
-          data_file_count   = lookup(var.sql_settings.storage_configuration.tmp_settings, "data_file_count", 8)
-          data_file_size_mb = lookup(var.sql_settings.storage_configuration.tmp_settings, "data_file_size_mb", 8)
+          default_file_path      = var.sql_settings.storage_configuration.tmp_settings.default_tmp_path
+          luns                   = var.sql_settings.storage_configuration.tmp_settings.default_tmp_lun
+          data_file_count        = lookup(var.sql_settings.storage_configuration.tmp_settings, "data_file_count", 8)
+          data_file_size_mb      = lookup(var.sql_settings.storage_configuration.tmp_settings, "data_file_size_mb", 8)
           data_file_growth_in_mb = lookup(var.sql_settings.storage_configuration.tmp_settings, "data_file_growth_in_mb", 64)
         }
       }

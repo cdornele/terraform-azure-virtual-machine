@@ -44,7 +44,7 @@ resource "azurerm_storage_account" "example" {
 
 resource "azurerm_public_ip" "pip-lnx" {
   count               = 1
-  name                = format("%s-%01d-%s","example-pip-linx",count.index+1,random_id.id.hex)
+  name                = format("%s-%01d-%s", "example-pip-linx", count.index + 1, random_id.id.hex)
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   allocation_method   = "Static"
@@ -76,22 +76,22 @@ module "linux_vm" {
   vm_subnet_id                       = azurerm_subnet.example.id
   vm_private_ip_address_allocation   = "Dynamic"
   vm_bootDiagnosticsUri              = azurerm_storage_account.example.primary_blob_endpoint
-  vm_dataDisks                       = [
-                                          {
-                                            dataDiskStgType = "Standard_LRS"
-                                            dataDiskCache = "None"
-                                            dataDiskSizeGiB = 256
-                                            dataDiskLun = 10
-                                            dataDiskId = "data"
-                                          },
-                                          {
-                                            dataDiskStgType = "Standard_LRS"
-                                            dataDiskCache = "None"
-                                            dataDiskSizeGiB = 128
-                                            dataDiskLun = 11
-                                            dataDiskId = "log"
-                                          },
-                                        ]
+  vm_dataDisks = [
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 256
+      dataDiskLun     = 10
+      dataDiskId      = "data"
+    },
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 128
+      dataDiskLun     = 11
+      dataDiskId      = "log"
+    },
+  ]
   vm_tags = {
     environment = "dev"
   }

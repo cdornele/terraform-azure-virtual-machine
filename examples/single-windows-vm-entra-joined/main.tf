@@ -65,18 +65,18 @@ module "windows_vm" {
   vm_private_ip_address_allocation   = "Static"
   vm_private_ip_address              = ["10.0.1.11"]
   vm_bootDiagnosticsUri              = azurerm_storage_account.example.primary_blob_endpoint
-  vm_dataDisks                       = [
-                                        {
-                                          dataDiskStgType = "Standard_LRS"
-                                          dataDiskCache = "None"
-                                          dataDiskSizeGiB = 256
-                                          dataDiskLun = 10
-                                          dataDiskId = "data"
-                                        }
-                                       ]
-  vm_tags                             = {
-                                          environment = "test"
-                                        }
+  vm_dataDisks = [
+    {
+      dataDiskStgType = "Standard_LRS"
+      dataDiskCache   = "None"
+      dataDiskSizeGiB = 256
+      dataDiskLun     = 10
+      dataDiskId      = "data"
+    }
+  ]
+  vm_tags = {
+    environment = "test"
+  }
 }
 # end
 #--------------------------------------------*--------------------------------------------

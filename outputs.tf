@@ -24,24 +24,24 @@ output "linux_vm_private_ips" {
 
 output "linux_vm_info" {
   description = "Linux VMs information"
-  value       = {
-    for vm in azurerm_linux_virtual_machine.vm-linux: vm.name => {
-      id = vm.id
-      location = vm.location
+  value = {
+    for vm in azurerm_linux_virtual_machine.vm-linux : vm.name => {
+      id         = vm.id
+      location   = vm.location
       private_ip = vm.private_ip_address
-      public_ip = vm.public_ip_address
+      public_ip  = vm.public_ip_address
     }
   }
 }
 
 output "windows_vm_info" {
   description = "Windows VMs information"
-  value       = {
+  value = {
     for vm in azurerm_windows_virtual_machine.windows-vm : vm.name => {
-      id = vm.id
-      location = vm.location
+      id         = vm.id
+      location   = vm.location
       private_ip = vm.private_ip_address
-      public_ip = vm.public_ip_address
+      public_ip  = vm.public_ip_address
     }
   }
 }

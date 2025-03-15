@@ -65,7 +65,7 @@
 | <a name="input_vm_imagePlanExist"></a> [vm\_imagePlanExist](#input\_vm\_imagePlanExist) | Does the image have a plan? | `string` | `"no"` | no |
 | <a name="input_vm_imagePlanId"></a> [vm\_imagePlanId](#input\_vm\_imagePlanId) | The ID of the image plan | `string` | `null` | no |
 | <a name="input_vm_imagePlanProductId"></a> [vm\_imagePlanProductId](#input\_vm\_imagePlanProductId) | The product ID of the image plan | `string` | `null` | no |
-| <a name="input_vm_imagePlanPublisher"></a> [vm\_imagePlanPublisher](#input\_vm\_imagePlanPublisher) | The publisher of the image plan | `string` | `null` | no |
+| <a name="input_vm_imagePlanPublisherId"></a> [vm\_imagePlanPublisherId](#input\_vm\_imagePlanPublisherId) | The publisher of the image plan | `string` | `null` | no |
 | <a name="input_vm_imagePublisher"></a> [vm\_imagePublisher](#input\_vm\_imagePublisher) | The publisher of the image to use for the virtual machine. | `string` | `null` | no |
 | <a name="input_vm_imageSku"></a> [vm\_imageSku](#input\_vm\_imageSku) | The SKU of the image to use for the virtual machine. | `string` | `null` | no |
 | <a name="input_vm_imageVersion"></a> [vm\_imageVersion](#input\_vm\_imageVersion) | The version of the image to use for the virtual machine. | `string` | `null` | no |
@@ -80,11 +80,13 @@
 | <a name="input_vm_private_ip_address_allocation"></a> [vm\_private\_ip\_address\_allocation](#input\_vm\_private\_ip\_address\_allocation) | The private IP address allocation method for the virtual machine. | `string` | `"Dynamic"` | no |
 | <a name="input_vm_publicIp_id"></a> [vm\_publicIp\_id](#input\_vm\_publicIp\_id) | The ID of a Public IP Address to associate with the Network Interface. | `list(string)` | `[]` | no |
 | <a name="input_vm_public_ip_enabled"></a> [vm\_public\_ip\_enabled](#input\_vm\_public\_ip\_enabled) | Enable public IP address for the virtual machine. | `bool` | `false` | no |
+| <a name="input_vm_secure_boot_enabled"></a> [vm\_secure\_boot\_enabled](#input\_vm\_secure\_boot\_enabled) | Enable secure boot on the virtual machine. | `bool` | `false` | no |
 | <a name="input_vm_size"></a> [vm\_size](#input\_vm\_size) | The size of the virtual machine. | `string` | n/a | yes |
 | <a name="input_vm_sql_enabled"></a> [vm\_sql\_enabled](#input\_vm\_sql\_enabled) | Enable SQL Server | `bool` | `false` | no |
 | <a name="input_vm_sql_settings"></a> [vm\_sql\_settings](#input\_vm\_sql\_settings) | Settings for the SQL Server | `map` | `{}` | no |
 | <a name="input_vm_subnet_id"></a> [vm\_subnet\_id](#input\_vm\_subnet\_id) | The ID of the subnet in which the virtual machine will be created. | `string` | n/a | yes |
 | <a name="input_vm_tags"></a> [vm\_tags](#input\_vm\_tags) | Tags for the resources | `any` | n/a | yes |
+| <a name="input_vm_vtpm_enabled"></a> [vm\_vtpm\_enabled](#input\_vm\_vtpm\_enabled) | Enable vTPM on the virtual machine. | `bool` | `false` | no |
 
 ## Outputs
 

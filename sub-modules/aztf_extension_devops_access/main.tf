@@ -13,7 +13,7 @@ resource "azurerm_virtual_machine_extension" "this" {
       "script" = base64encode(
         templatefile(
           format(
-            "%s/templates/configure_devops.sh.tmpl", path.module),
+          "%s/templates/configure_devops.sh.tmpl", path.module),
           {
             local_user = var.vms_username
             key        = var.devops_ssh_key
